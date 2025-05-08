@@ -69,12 +69,13 @@ class TableExtractorDownloaderMiddleware:
         return s
 
     def process_request(self, request, spider):
-    # Set a custom User-Agent header
         request.headers['User-Agent'] = (
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
             'AppleWebKit/537.36 (KHTML, like Gecko) '
             'Chrome/123.0.0.0 Safari/537.36'
         )
+        # Set a custom User-Agent header
+        
         return None
 
     def process_response(self, request, response, spider):
