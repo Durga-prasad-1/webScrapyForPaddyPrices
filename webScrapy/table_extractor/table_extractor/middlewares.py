@@ -74,9 +74,8 @@ class TableExtractorDownloaderMiddleware:
             'AppleWebKit/537.36 (KHTML, like Gecko) '
             'Chrome/123.0.0.0 Safari/537.36'
         )
-        # Set a custom User-Agent header
-        
         return None
+
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.
