@@ -69,16 +69,13 @@ class TableExtractorDownloaderMiddleware:
         return s
 
     def process_request(self, request, spider):
-        # Called for each request that goes through the downloader
-        # middleware.
-
-        # Must either:
-        # - return None: continue processing this request
-        # - or return a Response object
-        # - or return a Request object
-        # - or raise IgnoreRequest: process_exception() methods of
-        #   installed downloader middleware will be called
-        return None
+    # Set a custom User-Agent header
+    request.headers['User-Agent'] = (
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+        'AppleWebKit/537.36 (KHTML, like Gecko) '
+        'Chrome/123.0.0.0 Safari/537.36'
+    )
+    return None
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.
