@@ -3,6 +3,7 @@ from table_extractor.items import TableExtractorItem
 from datetime import datetime
 
 today = datetime.today().strftime("%d-%b-%Y")
+today = "18-May-2025"
 
 class TableSpider(scrapy.Spider):
     name = 'table_spider'
