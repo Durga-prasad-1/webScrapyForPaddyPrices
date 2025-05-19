@@ -3,7 +3,7 @@ from table_extractor.items import TableExtractorItem
 from datetime import datetime
 
 today = datetime.today().strftime("%d-%b-%Y")
-# today = "08-May-2025"
+# today = "18-May-2025"
 
 class TableSpider(scrapy.Spider):
     name = 'table_spider'
@@ -18,13 +18,19 @@ class TableSpider(scrapy.Spider):
         )
 
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
-                          '(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Referer': 'https://agmarknet.gov.in/',
-            'Connection': 'keep-alive',
-        }
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Cache-Control": "max-age=0",
+    }
+
 
         self.logger.info(f"Sending request to {url} with headers")
         yield scrapy.Request(url=url, headers=headers, callback=self.parse)
@@ -61,3 +67,4 @@ class TableSpider(scrapy.Spider):
                 item['price_date'] = row_data[9]
 
                 yield item
+
